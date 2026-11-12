@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b18">
+<title>Animate AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080b18;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:28px 15px;background:#111936}
+h1{color:#8b7cff;font-size:32px;margin:5px}
+.subtitle{color:#b9bfd5}
+main{max-width:600px;margin:auto;padding:20px}
+.card{background:#141d38;padding:20px;border-radius:18px;margin:18px 0}
+h2{font-size:20px;color:#a99cff}
+textarea{width:100%;height:110px;background:#080f25;color:white;border:1px solid #46517a;border-radius:12px;padding:13px;font-size:15px}
+input,select{width:100%;padding:13px;background:#080f25;color:white;border:1px solid #46517a;border-radius:10px;margin:10px 0}
+button{width:100%;padding:15px;border:0;border-radius:12px;background:#8065ff;color:white;font-weight:bold;font-size:16px;margin-top:12px}
+button:active{opacity:.7}
+#preview{width:100%;border-radius:12px;margin-top:15px}
+footer{text-align:center;color:#8c94ad;padding:25px}
+</style>
+</head>
+<body>
+<header>
+<h1>✨ Animate AI</h1>
+<p class="subtitle">Photo to Video & Text to Video Generator</p>
+</header>
+<main>
+<div class="card">
+<h2>📸 Photo to Video</h2>
+<input type="file" id="photo" accept="image/*">
+<img id="preview" hidden>
+<textarea id="photoPrompt" placeholder="Describe how you want your photo to move..."></textarea>
+<button onclick="photoGenerate()">Generate Photo Video</button>
+</div>
+<div class="card">
+<h2>🎬 Text to Video</h2>
+<textarea id="textPrompt" placeholder="Describe the video you want to create..."></textarea>
+<select id="duration">
+<option>5 seconds</option>
+<option>8 seconds</option>
+<option>10 seconds</option>
+</select>
+<button onclick="textGenerate()">Generate AI Video</button>
+</div>
+<div class="card">
+<h2>💎 Animate AI Credits</h2>
+<p>Starter: $2</p>
+<p>Standard: $5</p>
+<p>Premium: $10</p>
+<p>Free daily credits coming soon.</p>
+</div>
+<div id="result" class="card">
+Your generated videos will appear here.
+</div>
+</main>
+<footer>© 2026 Animate AI</footer>
+<script>
+const photo=document.getElementById('photo');
+photo.onchange=()=>{
+const file=photo.files[0];
+if(file){
+const img=document.getElementById('preview');
+img.src=URL.createObjectURL(file);
+img.hidden=false;
+}
+};
+function photoGenerate(){
+if(!photo.files.length){
+alert('Please select a photo first.');
+return;
+}
+if(!document.getElementById('photoPrompt').value.trim()){
+alert('Please describe your video.');
+return;
+}
+alert('Photo selected! Connect an AI video API to generate your video.');
+}
+function textGenerate(){
+if(!document.getElementById('textPrompt').value.trim()){
+alert('Please describe your video first.');
+return;
+}
+alert('Prompt ready! Connect an AI video API to generate your video.');
+}
+</script>
+</body>
+</html>
